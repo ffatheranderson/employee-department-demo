@@ -47,7 +47,7 @@ All required dependencies (ex. spring boot, data jpa, h2, etc) are already added
 2. Import the project into your IDE, then build it.
 3. Run the spring boot app - fix any exceptions.
 4. At this point, the spring boot app should be in a running state, free of exceptions.
-5. Open h2 console - http://www.h2database.com/html/quickstart.html - and login (basic h2 properties have been set within the app).
+5. Open h2 console - https://www.baeldung.com/spring-boot-h2-database - and login (basic h2 properties have been set within the app).
 
 ---
 **Build**

@@ -1,11 +1,14 @@
 package com.inoptra.employeedepartmentdemo.models;
 
+import javax.persistence.Embeddable;
+
 /* @Author: Shrikrishna Prabhumirashi
  * @Description:
  * SalaryComponent is dependent upon base salary and can be calculated as baseSalary multiplied by respective factor.
  *  i.e. SalaryComponent_amount = baseSalary * factor;
  *  Actual salary can be calculated as sum of all SalaryComponent amounts.
  * */
+@Embeddable
 public class SalaryComponent {
 	private String name;
 

@@ -1,18 +1,25 @@
 package com.inoptra.employeedepartmentdemo.models;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
 /**
  * @Author: Shrikrishna Prabhumirashi
  * @Description:
  * Represents Employee entity
  **/
+@Entity
 public class Employee {
 
+	@Id
 	private Long id;
 
 	private String name;
 
 	private Salary salary;
 
+	@ManyToOne
 	private Department department;
 
 	public Long getId() {
