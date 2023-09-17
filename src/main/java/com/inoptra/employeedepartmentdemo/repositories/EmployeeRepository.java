@@ -28,12 +28,14 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
             "WHERE d.ID = ?1", nativeQuery = true)
     Double getTotalSalaryForAllDepartmentsForDepartment(Long depId);
 
-    @Query(value = "SELECT ((SELECT SUM(esc.FACTOR * e.BASE_SALARY) / COUNT(DISTINCT(E.ID))  \n" +
-            "            FROM DEPARTMENT d JOIN EMPLOYEE e ON d.id = e.department_ID \n" +
-            "            JOIN EMPLOYEE_SALARY_COMONENTS esc ON e.ID = esc.EMPLOYEE_ID\n" +
-            "            WHERE d.ID = od.ID) / (SELECT COUNT(od.id))) avg_salary_per_dep\n" +
-            "FROM Department od", nativeQuery = true)
-    List<Double> getAverageSalaryForAllDepartments();
+    @Query(value = "SELECT AVG(s.avg_salary_per_dep) " +
+            "FROM (SELECT " +
+            "              ((SELECT SUM(esc.FACTOR * e.BASE_SALARY) / COUNT(DISTINCT(E.ID))  \n" +
+            "                        FROM DEPARTMENT d JOIN EMPLOYEE e ON d.id = e.department_ID \n" +
+            "                        JOIN EMPLOYEE_SALARY_COMONENTS esc ON e.ID = esc.EMPLOYEE_ID\n" +
+            "                        WHERE d.ID = od.ID) / (SELECT COUNT(od.id))) avg_salary_per_dep\n" +
+            "            FROM Department od) s", nativeQuery = true)
+    Double getAverageSalaryForAllDepartments();
 
     @Query(value = "SELECT SUM(esc.FACTOR * e.BASE_SALARY) / COUNT(DISTINCT(E.ID))  " +
             "FROM DEPARTMENT d JOIN EMPLOYEE e ON d.id = e.department_ID " +

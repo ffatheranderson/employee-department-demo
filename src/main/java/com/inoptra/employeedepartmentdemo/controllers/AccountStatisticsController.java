@@ -39,8 +39,7 @@ public class AccountStatisticsController {
 
     @GetMapping("/all/avg")
     public double getAverageSalaryForAllDepartments() {
-        List<Double> averageSalaryForAllDepartments = empRepository.getAverageSalaryForAllDepartments();
-        return averageSalaryForAllDepartments.stream().mapToDouble(Double::doubleValue).sum() / averageSalaryForAllDepartments.size();
+        return empRepository.getAverageSalaryForAllDepartments();
     }
 
     @GetMapping("/{deptId}/avg")
