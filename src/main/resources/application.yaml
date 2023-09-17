@@ -1,7 +1,7 @@
 spring:
   datasource:
     # url: "jdbc:h2:mem:testdb"   --- in memory
-    url: "jdbc:h2:file:/data/demo"   # file storage
+    url: "jdbc:h2:file:c:/data/demo"   # file storage
     driverClassName: org.h2.Driver
     username: sa
     password:
@@ -10,6 +10,10 @@ spring:
 
   jpa:
     show-sql: true
-#    hibernate.ddl-auto: create
-    hibernate.ddl-auto: update
+    hibernate.ddl-auto: create-drop
+#    hibernate.ddl-auto: update
     database-platform: org.hibernate.dialect.H2Dialect
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
